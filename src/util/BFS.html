@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var M = 4;
+    var N = 4;
+    var stepArr = [[-1, 0], [0, -1], [1, 0], [0, 1]];
+    var visit = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
+    var maze = [
+        [0, 0, 1, 1],
+        [0, 0, 0, 1],
+        [1, 1, 0, 1],
+        [0, 0, 0, 0]
+    ];
+    if (bfs() < 0) {
+        console.log("Fail! Maybe no solution");
+    }
+
+    function bfs() {
+        var node = {};
+        node.x = 0;
+        node.y = 0;
+        node.preX = -1;
+        node.preY = -1;
+        node.step = 0;
+        var queue = new Queue();
+        var stack = new Stack();
+        queue.enqueue(node);
+        while (!queue.empty()) {
+            var head = queue.poll();
+            stack.push(head);
+            visit[head.x][head.y] = 1;
+            for (var i = 0; i < 4; i++) {
+                var x = head.x + stepArr[i][0];
+                var y = head.y + stepArr[i][1];
+                if (x == M - 1 && y == N - 1 && maze[x][y] == 0 && visit[x][y] == 0) {
+                    //打印路径
+                    var top = stack.pop();
+                    console.log("steps:" + (top.step + 1));
+                    console.log("the path:");
+                    console.log("("+(M - 1) + "," + (N - 1)+")");
+                    console.log("("+top.x + "," + top.y+")");
+                    var preX = top.preX;
+                    var preY = top.preY;
+                    while (stack.length()!=0) {
+                        top = stack.pop();
+                        if (preX == top.x && preY == top.y) {
+                            console.log("("+preX + "," + preY+")");
+                            preX = top.preX;
+                            preY = top.preY;
+                        }
+
+                    }
+                    return 0;
+                }
+                //bfs
+                if (x >= 0 && x < M && y >= 0 && y < N && maze[x][y] == 0 && visit[x][y] == 0) {
+                    var newNode = {};
+                    newNode.x = x;
+                    newNode.y = y;
+                    newNode.preX = head.x;
+                    newNode.preY = head.y;
+                    newNode.step = head.step + 1;
+                    queue.enqueue(newNode);
+                }
+            }
+
+        }
+        return -1;
+    }
+
+    // 使用栈stack类的实现
+    function Stack() {
+        //保存栈内元素，初始化为一个空数组
+        this.dataStore = [];
+        //栈顶位置，初始化为0
+        this.top = 0;
+        //入栈
+        this.push = push;
+        //出栈
+        this.pop = pop;
+        //查看栈顶元素
+        this.peek = peek;
+        //清空栈
+        this.clear = clear;
+        //栈内存放元素的个数
+        this.length = length;
+    }
+
+    function push(element) {
+        this.dataStore[this.top++] = element;
+    }
+
+    function pop() {
+        return this.dataStore[--this.top];
+    }
+
+    function peek() {
+        return this.dataStore[this.top - 1];
+    }
+
+    function clear() {
+        this.top = 0;
+    }
+
+    function length() {
+        return this.top;
+    }
+
+    //判断数组是否为空
+    function empty() {
+        if (length() == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /*--------------Queue类的定义和测试代码----------------*/
+    function Queue() {
+        this.dataStore = [];
+        this.enqueue = enqueue;
+        this.dequeue = dequeue;
+        this.front = front;
+        this.back = back;
+        this.poll = poll;
+        this.toString = toString;
+        this.empty = empty;
+    }
+
+    //入队，就是在数组的末尾添加一个元素
+    function enqueue(element) {
+        this.dataStore.push(element);
+    }
+
+    //出队，就是删除数组的第一个元素
+    function dequeue() {
+        return this.dataStore.shift();
+    }
+
+    //取出数组的第一个元素
+    function front() {
+        return this.dataStore[0];
+    }
+
+    //取出数组的最后一个元素
+    function back() {
+        return this.dataStore[this.dataStore.length - 1];
+    }
+
+    //取出数组的最后一个元素并从队列中删除
+    function poll() {
+        return this.dataStore.pop();
+    }
+
+    function toString() {
+        var retStr = "";
+        for (var i = 0; i < this.dataStore.length; ++i) {
+            retStr += this.dataStore[i] + "&nbsp;"
+        }
+        return retStr;
+    }
+
+    //判断数组是否为空
+    function empty() {
+        if (this.dataStore.length == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //返回数组中元素的个数
+    function count() {
+        return this.dataStore.length;
+    }
+</script>
+</html>
