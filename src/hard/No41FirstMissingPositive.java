@@ -27,7 +27,7 @@ public class No41FirstMissingPositive {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{7,8,9,11,12};
+        int[] nums = new int[]{-1, -2, 4, 3, 2};
         System.out.println(new No41FirstMissingPositive().firstMissingPositive(nums));
     }
 }
