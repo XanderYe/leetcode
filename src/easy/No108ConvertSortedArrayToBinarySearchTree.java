@@ -1,4 +1,4 @@
-package easy.No108;
+package easy;
 
 
 import structure.TreeNode;
@@ -8,7 +8,7 @@ import structure.TreeNode;
  *
  * @author 叶振东
  */
-public class ConvertSortedArrayToBinarySearchTree {
+public class No108ConvertSortedArrayToBinarySearchTree {
     public TreeNode sortedArrayToBST(int[] nums) {
         return helper(nums, 0, nums.length - 1);
     }
