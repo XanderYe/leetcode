@@ -11,18 +11,20 @@ public class No20ValidParentheses {
         System.out.println(isValid(s));
     }
     public static boolean isValid(String s) {
-        if (s.isEmpty())
+        if (s.isEmpty()) {
             return true;
+        }
         Stack<Character> stack = new Stack<>();
         for (char c : s.toCharArray()) {
-            if (c == '(')
+            if (c == '(') {
                 stack.push(')');
-            else if (c == '{')
+            } else if (c == '{') {
                 stack.push('}');
-            else if (c == '[')
+            } else if (c == '[') {
                 stack.push(']');
-            else if (stack.isEmpty() || stack.pop() != c)
+            } else if (stack.isEmpty() || stack.pop() != c) {
                 return false;
+            }
         }
         return stack.isEmpty();
     }
