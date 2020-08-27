@@ -7,7 +7,7 @@ import java.util.*;
  *
  * @author 叶振东
  */
-public class NoLetterCombinationsOfAPhoneNumber {
+public class No17LetterCombinationsOfAPhoneNumber {
 
     private static List<String> ans = new ArrayList<>();
 
@@ -45,7 +45,7 @@ public class NoLetterCombinationsOfAPhoneNumber {
         }
     }
     public static void main(String[] args) {
-        List<String> list = new NoLetterCombinationsOfAPhoneNumber().letterCombinations("");
+        List<String> list = new No17LetterCombinationsOfAPhoneNumber().letterCombinations("");
         list.forEach(System.out::println);
     }
 }
