@@ -21,12 +21,13 @@ public class TreeNode {
 
     }
 
-    public TreeNode(Integer[] nums) {
+    public static TreeNode create(Integer...nums) {
+        TreeNode root = new TreeNode();
         if (nums.length > 0) {
             int index = 0;
             Deque<TreeNode> deque = new ArrayDeque<>();
-            this.val = nums[index++];
-            deque.add(this);
+            root.val = nums[index++];
+            deque.add(root);
             while (!deque.isEmpty()) {
                 TreeNode treeNode = deque.pop();
                 if (index == nums.length) {
@@ -54,5 +55,6 @@ public class TreeNode {
                 }
             }
         }
+        return root;
     }
 }
