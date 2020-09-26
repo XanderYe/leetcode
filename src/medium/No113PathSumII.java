@@ -14,10 +14,10 @@ import java.util.List;
  */
 public class No113PathSumII {
     List<List<Integer>> ans;
-    Deque deque;
+    Deque<Integer> deque;
     public List<List<Integer>> pathSum(TreeNode root, int sum) {
         ans = new ArrayList<>();
-        deque = new ArrayDeque();
+        deque = new ArrayDeque<>();
         dfs(root, sum);
         return ans;
     }
