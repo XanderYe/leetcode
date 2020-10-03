@@ -2,6 +2,7 @@ package easy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,6 +19,19 @@ public class No1TwoSum {
             }
         }
         throw new IllegalArgumentException("No solution");
+    }
+
+    public int[] twoSum2(Integer[] nums, int target) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int[] ans = new int[2];
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(nums[i])) {
+                ans[0] = i;
+                ans[1] = map.get(nums[i]);
+            }
+            map.put(target - nums[i], i);
+        }
+        return ans;
     }
 
     public static void main(String[] args) {
