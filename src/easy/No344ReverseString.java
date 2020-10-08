@@ -7,14 +7,24 @@ public class No344ReverseString {
     public static void main(String[] args) {
         System.out.println(new No344ReverseString().reverseString("hello"));
     }
+
     public String reverseString(String s) {
-        char[] c=s.toCharArray();
+        char[] c = s.toCharArray();
         char tmp;
-        for(int i=0;i<c.length/2;i++){
-            tmp=c[i];
-            c[i]=c[c.length-1-i];
-            c[c.length-1-i]=tmp;
+        for (int i = 0; i < c.length / 2; i++) {
+            tmp = c[i];
+            c[i] = c[c.length - 1 - i];
+            c[c.length - 1 - i] = tmp;
         }
         return new String(c);
+    }
+
+    public void reverseString(char[] s) {
+        char tmp;
+        for (int i = 0; i < s.length / 2; i++) {
+            tmp = s[i];
+            s[i] = s[s.length - 1 - i];
+            s[s.length - 1 - i] = tmp;
+        }
     }
 }
