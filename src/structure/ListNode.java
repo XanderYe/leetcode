@@ -26,4 +26,19 @@ public class ListNode {
             System.out.println("null");
         }
     }
+
+    public static ListNode create(Integer...nums) {
+        ListNode listNode = null;
+        ListNode head = null;
+        for (Integer num : nums) {
+            if (listNode == null) {
+                listNode = new ListNode(num);
+                head = listNode;
+            } else {
+                listNode.next = new ListNode(num);
+                listNode = listNode.next;
+            }
+        }
+        return head;
+    }
 }
