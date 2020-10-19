@@ -11,6 +11,11 @@ public class ListNode {
         this.val = x;
     }
 
+    public ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
+    }
+
     public static void print(ListNode listNode) {
         StringBuilder stringBuilder = new StringBuilder();
         if (listNode != null) {
