@@ -9,7 +9,11 @@ import java.util.Arrays;
  */
 public class QuickSort {
 
-    public void quickSort(int[] nums, int low, int high) {
+    public static void sort(int[] nums) {
+        quickSort(nums, 0, nums.length - 1);
+    }
+
+    private static void quickSort(int[] nums, int low, int high) {
         if (low <high) {
             int k = partition(nums, low, high);
             quickSort(nums, low, k - 1);
@@ -17,7 +21,7 @@ public class QuickSort {
         }
     }
 
-    public int partition(int[] nums, int low, int high) {
+    private static int partition(int[] nums, int low, int high) {
         int pivot = nums[low];
         while (low < high) {
             while (low < high && nums[high] >= pivot) {
@@ -35,7 +39,7 @@ public class QuickSort {
 
     public static void main(String[] args) {
         int[] nums = new int[]{1,8,4,7,3,7,1};
-        new QuickSort().quickSort(nums, 0, nums.length - 1);
+        QuickSort.sort(nums);
         System.out.println(Arrays.toString(nums));
     }
 }
