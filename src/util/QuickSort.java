@@ -28,11 +28,35 @@ public class QuickSort {
                 high--;
             }
             nums[low] = nums[high];
-            while (low < high && nums[low] < pivot) {
+            while (low < high && nums[low] <= pivot) {
                 low++;
             }
             nums[high] = nums[low];
         }
+        nums[low] = pivot;
+        return low;
+    }
+
+    /**
+     * 最后再交换
+     */
+    private static int partition2(int[] nums, int low, int high) {
+        int start = low;
+        int pivot = nums[start];
+        while (low < high) {
+            while (low < high && nums[high] >= pivot) {
+                high--;
+            }
+            while (low < high && nums[low] <= pivot) {
+                low++;
+            }
+            if (low < high) {
+                int tmp = nums[low];
+                nums[low] = nums[high];
+                nums[high] = tmp;
+            }
+        }
+        nums[start] = nums[low];
         nums[low] = pivot;
         return low;
     }
