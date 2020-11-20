@@ -4,10 +4,13 @@ package structure;
  * Created by YE on 2018-10-15.
  */
 public class ListNode {
-    public int val;
+    public Integer val;
     public ListNode next;
 
-    public ListNode(int x) {
+    public ListNode() {
+    }
+
+    public ListNode(Integer x) {
         this.val = x;
     }
 
