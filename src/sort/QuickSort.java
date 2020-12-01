@@ -1,11 +1,11 @@
-package util;
+package sort;
 
 import java.util.Arrays;
 
 /**
  * Created on 2020/11/9.
  *
- * @author 叶振东
+ * @author XanderYe
  */
 public class QuickSort {
 
